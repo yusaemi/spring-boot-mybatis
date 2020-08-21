@@ -1,0 +1,32 @@
+#active: dev/test/prod
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  application:
+    name: spring-boot-mybatis
+  datasource:
+    driver-class-name: @database.driver.name@
+    url: @database.url@
+    username: @database.username@
+    password: @database.password@
+
+server:
+  port: @server.port@
+
+# 整合Mybatis
+mybatis:
+  type-aliases-package: idv.module.po
+  # 若mapper與mapper.xml不同路徑，需要設定下面參數，告知spring xml的位置
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: @logback.sql@
+
+# 列印sql log
+logging:
+  level:
+    idv.module.dao.mapper: DEBUG
+
+#配置logback變數
+logback:
+  path: @logback.path@
+  name: @logback.name@

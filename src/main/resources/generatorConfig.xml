@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 載入環境設定 -->
+    <properties resource="generator.properties"/>
+
+    <!-- 指定jdbc jar檔位置，plugin有指定dependency無須載入此設定 -->
+<!--    <classPathEntry location="${jdbc.driverLocation}"/>-->
+
+    <!-- 資料庫context，targetRuntime設定為MyBatis3 -->
+    <context id="mySql" targetRuntime="MyBatis3">
+
+        <!-- lombok plugin -->
+        <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">
+            <!-- enable annotations -->
+            <property name="builder" value="true"/>
+        </plugin>
+
+        <!-- 生成的po，序列化 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- 註解 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/><!-- 是否取消註解 -->
+            <property name="suppressDate" value="false" />  <!-- 是否生成註解帶時間戳記 -->
+        </commentGenerator>
+
+        <!-- Database connection -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}" userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <!-- 轉換類型 -->
+        <javaTypeResolver>
+            <!-- 預設false
+            將JDBC DECIMAL 和 NUMERIC 型態解析為java.math.BigDecimal
+            若為false，則會根據類型決定java型別
+            如果小數位數大於零，或者長度大於18，解析為java.math.BigDecimal類型。
+            如果小數位數為零，長度為10到18，解析為java.lang.Long。
+            如果小數位數為零，長度為5到9，解析為java.lang.Integer。
+            如果小數位數為零，並且長度小於5，解析為java.lang.Short。
+            -->
+            <property name="forceBigDecimals" value="true"/>
+            <!-- 預設false
+            將DATE、TIME、TIMESTAMP 轉換為 LocalDate、LocalTime、LocalDateTime
+            -->
+            <property name="useJSR310Types" value="true"/>
+        </javaTypeResolver>
+
+        <!-- 對應的po，targetPackage: 目標路徑，targetProject: 存放project位置 -->
+        <javaModelGenerator targetPackage="${package.model}"
+                            targetProject="./src/main/java">
+            <!-- 是否新增schema package, false: package為idv.model， true: package為idv.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- Database清除前後空白 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 對應的xml位置 -->
+        <sqlMapGenerator targetPackage="${package.mapper}"
+                         targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 對應的interface, type為XMLMAPPER表示使用xml配置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${package.dao}" targetProject="./src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!-- 產製的table，這裡配置的是不生成Example文件 -->
+        <!-- schema: database name，tableName: 對應的table，domainObjectName: 生成的實體類別，ByExample: 是否生成 example類別   -->
+        <table tableName="product" domainObjectName="Product"
+               schema="${schema}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <!-- 忽略列，不生成bean 字段
+            <ignoreColumn column="FRED" />-->
+            <!-- 指定列的java資料類型
+            <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
+            <!-- 用於指定生成實體類別時，是否使用實際的列名作為實體類的屬性名。false是Camel Case-->
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+    </context>
+</generatorConfiguration>
