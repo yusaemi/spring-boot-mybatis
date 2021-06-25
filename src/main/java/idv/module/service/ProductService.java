@@ -2,7 +2,7 @@ package idv.module.service;
 
 import idv.module.dao.mapper.ProductMapper;
 import idv.module.po.Product;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,14 +12,10 @@ import org.springframework.stereotype.Service;
  * @version 1.0.0
  **/
 @Service
+@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductMapper productMapper;
-
-    @Autowired
-    public ProductService(ProductMapper productMapper) {
-        this.productMapper = productMapper;
-    }
 
     /**
      * 取得商品
