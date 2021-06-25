@@ -14,8 +14,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductService {
 
+    private final ProductMapper productMapper;
+
     @Autowired
-    private ProductMapper productMapper;
+    public ProductService(ProductMapper productMapper) {
+        this.productMapper = productMapper;
+    }
 
     /**
      * 取得商品
