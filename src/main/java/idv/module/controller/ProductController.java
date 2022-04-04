@@ -24,8 +24,8 @@ public class ProductController {
     /**
      * 取得商品
      *
-     * @param id
-     * @return
+     * @param id 商品流水號
+     * @return Product
      */
     @GetMapping("/{id}")
     public Product getProduct(@PathVariable("id") Integer id) {

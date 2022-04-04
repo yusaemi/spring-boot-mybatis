@@ -20,8 +20,8 @@ public class ProductService {
     /**
      * 取得商品
      *
-     * @param id
-     * @return
+     * @param id 商品流水號
+     * @return Product
      */
     public Product getProduct(Integer id) {
         return productMapper.selectByPrimaryKey(id);
