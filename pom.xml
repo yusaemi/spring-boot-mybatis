@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.7</version><!--update spring-boot version -->
+        <version>3.0.1</version><!--update spring-boot version -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -20,6 +20,7 @@
     <properties>
         <java.version>17</java.version>
         <mysql.version>8.0.31</mysql.version>
+        <mybatis.version>3.0.1</mybatis.version>
         <resource.delimiter>@</resource.delimiter>
     </properties>
 
@@ -56,7 +57,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.2.0</version>
+            <version>${mybatis.version}</version>
         </dependency>
 
         <dependency>
