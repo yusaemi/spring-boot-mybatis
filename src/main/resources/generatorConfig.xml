@@ -86,7 +86,9 @@
             <ignoreColumn column="FRED" />-->
             <!-- 指定列的java資料類型
             <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />  -->
-            <!-- 用於指定生成實體類別時，是否使用實際的列名作為實體類的屬性名。false是Camel Case-->
+            <!-- 若pKey為流水號，則加入此屬性定義
+            <generatedKey column="SERIAL_NO" sqlStatement="JDBC" identity="true" /> -->
+            <!-- 用於指定生成實體類別時，是否使用實際的列名作為實體類的屬性名。false是Camel Case -->
             <property name="useActualColumnNames" value="false"/>
         </table>
     </context>
