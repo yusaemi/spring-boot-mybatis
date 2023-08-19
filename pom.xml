@@ -22,6 +22,7 @@
         <mysql.version>8.0.31</mysql.version>
         <mybatis.version>3.0.1</mybatis.version>
         <micrometer-tracing.version>1.0.1</micrometer-tracing.version>
+        <mybatis-generator.version>1.4.2</mybatis-generator.version>
         <resource.delimiter>@</resource.delimiter>
     </properties>
 
@@ -111,7 +112,7 @@
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <version>${mybatis-generator.version}</version>
                 <configuration>
                     <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
                     <verbose>true</verbose>
