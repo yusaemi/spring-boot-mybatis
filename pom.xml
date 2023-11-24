@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version><!--update spring-boot version -->
+        <version>3.1.6</version><!--update spring-boot version -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -189,7 +189,7 @@
                 <database.driver.name>com.mysql.cj.jdbc.Driver</database.driver.name>
                 <database.url>jdbc:mysql://localhost:3306/master?useUnicode=true<![CDATA[&]]>characterEncoding=utf8<![CDATA[&]]>useSSL=false<![CDATA[&]]>serverTimezone=GMT%2B8</database.url>
                 <database.username>root</database.username>
-                <database.password>root</database.password>
+                <database.password>atlantis3173</database.password>
                 <logback.path>${project.basedir}/logs</logback.path>
                 <logback.name>${project.name}</logback.name>
                 <logback.sql>org.apache.ibatis.logging.stdout.StdOutImpl</logback.sql>
