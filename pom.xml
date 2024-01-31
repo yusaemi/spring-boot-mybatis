@@ -120,7 +120,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>spring-boot-mybatis</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <!-- mybatis自動生成實體類，相關配置完成後使用mvn mybatis-generator:generate -e產生實體類別 -->
             <plugin>
