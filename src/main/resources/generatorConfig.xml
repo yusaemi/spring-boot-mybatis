@@ -12,7 +12,7 @@
 <!--    <classPathEntry location="${jdbc.driverLocation}"/>-->
 
     <!-- 資料庫context，targetRuntime設定為MyBatis3 -->
-    <context id="mySql" targetRuntime="MyBatis3">
+    <context id="mariaDB" targetRuntime="MyBatis3">
 
         <!-- lombok plugin -->
         <plugin type="com.softwareloop.mybatis.generator.plugins.LombokPlugin">

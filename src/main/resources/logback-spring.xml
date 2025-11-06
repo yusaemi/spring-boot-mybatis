@@ -94,18 +94,26 @@
 
     </appender>
 
-    <root level="debug">
-        <appender-ref ref="file_all"/>
-        <appender-ref ref="console"/>
-    </root>
+    <springProfile name="dev">
+        <root level="info">
+            <appender-ref ref="console" />
+        </root>
+    </springProfile>
 
-    <root level="error">
-        <appender-ref ref="file_error"/>
-    </root>
+    <springProfile name="!dev">
+        <root level="debug">
+            <appender-ref ref="file_all"/>
+            <appender-ref ref="console"/>
+        </root>
 
-    <!--系統操作Log默認級別-->
-    <root level="info">
-        <appender-ref ref="file_info"/>
-    </root>
+        <root level="error">
+            <appender-ref ref="file_error"/>
+        </root>
+
+        <!--系統操作Log默認級別-->
+        <root level="info">
+            <appender-ref ref="file_info"/>
+        </root>
+    </springProfile>
 
 </configuration>
